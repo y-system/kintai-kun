@@ -1,0 +1,178 @@
+﻿/* @font-face{
+font-family:TanukiMagic;
+src:url('../style/TanukiMagic.ttf') format("truetype");
+}
+*/
+.c {
+    clear: both;
+}
+body{
+    background:url('../img/paper_fibers.png') repeat;
+    margin:0;
+    font-size:16px;
+}
+header{
+    margin:0;
+    padding:1px 0 1px 16px;
+    background: linear-gradient(to top, rgb(10,78,189) 4%, rgb(87,129,255) 21%, rgb(123,160,235) 83%, rgb(222,229,255) 100%) repeat scroll 0% 0% transparent;
+}
+h1{
+    font-family:TanukiMagic;
+    color:white;
+    text-shadow: 3px 3px 3px rgb(128,0,0), -1px -1px 0px rgb(51, 51, 51), 1px -1px 0px rgb(51, 51, 51), -1px 1px 0px rgb(51, 51, 51), 1px 1px 0px rgb(51, 51, 51);
+    margin:5px 0;
+    float:left;
+}
+h2{
+    font-family:TanukiMagic;
+    font-size:18px;
+    border-left: 10px solid rgb(66, 219, 108);
+    color: rgb(66, 219, 108);
+    padding: 0px 10px;
+    background: linear-gradient(to right, rgb(249, 249, 249) 38%, rgb(172, 229, 175) 86%, rgb(66, 219, 108) 100%) repeat scroll 0% 0% transparent;
+}
+h3{
+    border-left: 10px solid rgb(50, 134, 218);
+    color: rgb(50, 134, 218);
+    padding: 0px 10px;
+    background: linear-gradient(to right, rgb(249, 249, 249) 0%, rgb(228, 245, 252) 53%, rgb(159, 216, 239) 83%, rgb(42, 135, 234) 100%) repeat scroll 0% 0% transparent;
+}
+#syokisettei,#nyuryoku,#kekka{
+    float:right;
+    border:1px solid rgb(72,72,72);
+    border-radius:4px;
+    background:rgb(255,255,255);
+    margin-top:10px;
+    margin-right:16px;
+    padding:0 5px;
+}
+#wrapper{
+    padding:0 10px;
+    margin:10px auto;
+    width:960px; 
+}
+#first img{
+    width:200px;
+}
+#first{
+    line-height:1.8;
+}
+#firstres{
+    line-height:3.6;
+    margin-left:10px;
+    float:left;
+}
+.left{
+    text-align:left;
+}
+.right{
+    text-align:right;;
+}
+input{
+    font-size:20px;
+}
+input[type="button"]{
+    border: medium none;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    text-shadow: 1px 1px 1px rgb(141, 182, 250), 1px 1px 1px rgb(141, 182, 250);
+    background: linear-gradient(to bottom, rgb(208, 228, 247) 0%, rgb(149, 193, 229) 24%, rgb(99, 161, 211) 50%, rgb(83, 159, 225) 79%, rgb(135, 188, 234) 100%) repeat scroll 0% 0% transparent;
+}
+input[type="text"]{
+    width:80px;
+    background: none repeat scroll 0% 0% rgb(230, 235, 254);
+    border: none;
+}
+#wtime{
+    line-height:1.8;
+}
+ul li{
+    display: inline-block;
+    border: 1px solid rgb(72, 72, 72);
+    border-radius: 4px 4px 4px 4px;
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    margin:5px;
+    padding: 5px;
+    width: 3em;
+    text-align: center;
+    font-size:16px;
+}
+ul{
+    text-align:center;
+}
+#zennen{
+    float:left;
+}
+#jinen{
+    float:right;
+}
+td{
+    text-align:center;
+}
+tr{
+    border-bottom: 1px solid rgb(221, 221, 221);
+    border-collapse: collapse;
+}
+tr.odd {    /* 偶数番目(2,4,6……番目) */
+    background: white;
+}
+tr.even {  /* 奇数番目(1,3,5……番目) */
+    background-color: rgb(249, 249, 249);
+}
+tr#title-row{
+    border-top: 1px solid rgb(221, 221, 221);
+    background-color: rgb(238, 238, 238);
+    font-weight: bold;
+}
+table{
+    border-spacing: 0 1px;
+    width:100%;
+    border-collapse: collapse;
+}
+td{
+    vertical-align:middle;
+}
+#zennen a,#jinen a{
+    border: 1px solid rgb(72, 72, 72);
+    border-radius: 4px 4px 4px 4px;
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    padding: 5px;
+    text-align: center;
+}
+#timecard tr td{
+    border:1px solid rgb(112,105,149);
+    font-weight: bold;
+    background:white;
+}
+#timecard{
+    border-spacing: 0px 0px;
+    color:rgb(112,105,149);
+}
+ul{
+    padding-left: 0;
+}
+.deleteKyuyo{
+    color:red;
+    text-decoration:none;
+}
+#kyuyo table tr td{
+    border-right: 1px solid rgb(221, 221, 221);
+}
+#kyuyo table tr td:last-child{
+    border-right: none;
+}
+@media only screen and (min-width: 760px) and (max-width: 1000px) {
+    #wrapper{
+        width:736px; 
+    }
+}
+@media only screen and (min-width: 480px) and (max-width: 760px) {
+    #wrapper{
+        width:440px; 
+    }
+}
+@media only screen and (max-width: 480px) {
+    #wrapper{
+        width:320px; 
+    }
+}

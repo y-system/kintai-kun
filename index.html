@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=UTF-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:locale" content="ja_JP">
+    <title>勤怠くん</title>
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+    <script src="script/jquery-1.7.2.min.js"></script>
+    <script src="script/script.js"></script>
+  </head>
+  <body>
+    <!--  常時表示  -->
+    <header>
+      <h1>勤怠くん</h1>
+      <div id="syokisettei" onclick="syoki();">初期設定</div>
+      <div id="nyuryoku" onclick="nyuryoku();">入力画面</div>
+      <div id="kekka" onclick="kekka();">勤怠履歴</div>
+      <div class="c"></div>
+    </header>
+    <div id="wrapper">
+      <!--  初期登録画面  -->
+      <div id="first">
+        <center>
+          <img src="img/icon256.png">
+        </center>
+        <h2>設定</h2>
+        <table>
+          <tr><td class="right">時給：</td><td class="left"><input type="text" id="jikyu">円</td></tr>
+          <tr><td class="right">単位時間：</td><td class="left"><input type="text" id="tani">分</td></tr>
+          <tr><td class="right">標準労働時間：</td><td class="left"><input type="text" id="autostart"> ～ <input type="text" id="autoend"></td></tr>
+          <tr><td class="right">自動休憩：</td><td class="left"><input type="text" id="autorest">分</td></tr>
+          <tr><td rowspan="4" style="vertical-align:middle;" class="left"><input type="button" value="登録" onclick="jikyutoroku();"></td></tr>
+        </table>
+        <section id="clearAll">
+          <h2>すべてのデータの削除</h2>
+          <div style="text-align:center;">
+            <input type="button" value="初期化する" onclick="clearAll();">
+          </div>
+        </section>
+      </div>
+      <!--  勤怠時間登録画面  -->
+      <div id="working">
+        <h2>時間を入力してください。</h2>
+        <table id="timecard">
+          <tr><td rowspan="2">日付</td><td rowspan="2">出勤</td><td colspan="2">時間内</td><td rowspan="2">退勤</td></tr>
+          <tr><td>外出</td><td>再入</td></tr>
+          <tr><td><input type="text" id="year" maxlength="4" style="width:2em;">年 <input type="text" id="month" maxlength="2" style="width:1em;">月 <input type="text" id="day" maxlength="2" style="width:1em;">日</td><td><input type="text" id="starttime" style="width:3em;"></td><td><input type="text" id="kyukeistarttime" style="width:3em;"></td><td><input type="text" id="kyukeiendtime" style="width:3em;"></td><td><input type="text" id="finishtime" style="width:3em;"></td></tr>
+        </table>
+        <input type="button" value="登録" onclick="resistworking();">
+      </div>
+      <!--  勤怠履歴表示画面  -->
+      <div id="result">
+        <h2>勤怠履歴</h2>
+          <section id="months">
+            
+          </section>
+          <div class="c"></div>
+          <section id="kyuyo">
+            
+          </section>
+      </div>
+    </div>
+  </body>
+</html>
