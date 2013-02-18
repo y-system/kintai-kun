@@ -6,48 +6,131 @@
     <meta property="og:locale" content="ja_JP">
     <title>勤怠くん</title>
     <link rel="stylesheet" href="style/style.css" type="text/css">
+    <link rel="stylesheet" href="style/headers.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="style/input_areas.css">
+    <link rel="stylesheet" type="text/css" href="style/buttons.css">
     <script src="script/jquery-1.7.2.min.js"></script>
     <script src="script/script.js"></script>
   </head>
   <body>
     <!--  常時表示  -->
-    <header>
-      <h1>勤怠くん</h1>
-      <div id="syokisettei" onclick="syoki();">初期設定</div>
-      <div id="nyuryoku" onclick="nyuryoku();">入力画面</div>
-      <div id="kekka" onclick="kekka();">勤怠履歴</div>
-      <div class="c"></div>
-    </header>
-    <div id="wrapper">
+    <section role="region">
+      <header>
+        <menu type="toolbar">
+          <a id="syokisettei" onclick="syoki();"><span class="icon icon-back">初期設定</span></a>
+          <a id="nyuryoku" onclick="nyuryoku();"><span class="icon icon-edit">入力画面</span></a>
+          <a id="kekka" onclick="kekka();"><span class="icon icon-menu">勤怠履歴</span></a>
+        </menu>
+        <h1>勤怠くんbeta</h1>
+      </header>
+    </section>
       <!--  初期登録画面  -->
       <div id="first">
         <center>
-          <img src="img/icon256.png">
+          <img src="img/icon256.png" id="logo">
         </center>
         <h2>設定</h2>
-        <table>
-          <tr><td class="right">時給：</td><td class="left"><input type="text" id="jikyu">円</td></tr>
-          <tr><td class="right">単位時間：</td><td class="left"><input type="text" id="tani">分</td></tr>
-          <tr><td class="right">標準労働時間：</td><td class="left"><input type="text" id="autostart"> ～ <input type="text" id="autoend"></td></tr>
-          <tr><td class="right">自動休憩：</td><td class="left"><input type="text" id="autorest">分</td></tr>
-          <tr><td rowspan="4" style="vertical-align:middle;" class="left"><input type="button" value="登録" onclick="jikyutoroku();"></td></tr>
-        </table>
+        <form>
+          <fieldset>
+            <legend>時給</legend>
+            <section>
+              <p>
+                <input required="" type="number" id="jikyu">
+                <button type="reset">Clear</button>
+              </p>
+            </section>
+          </fieldset>
+          <fieldset>
+            <legend>単位時間(分)</legend>
+            <section>
+              <p>
+                <input required="" type="number" id="tani">
+                <button type="reset">Clear</button>
+              </p>
+            </section>
+          </fieldset>
+          <fieldset>
+            <legend class="action">標準労働時間</legend>
+            <section>
+              <p>
+                <input placeholder="出勤時間" type="text" id="autostart">
+                <button type="reset">Clear</button>
+              </p>
+              <p>
+                <input placeholder="退勤時間" type="text" id="autoend">
+                <button type="reset">Clear</button>
+              </p>
+            </section>
+          </fieldset>
+          <fieldset>
+            <legend>自動休憩分</legend>
+            <section>
+              <p>
+                <input type="number" id="autorest" placeholder="0">
+                <button type="reset">Clear</button>
+              </p>
+            </section>
+          </fieldset>
+          <button onclick="jikyutoroku();">登録</button>
+        </form>
+    
         <section id="clearAll">
           <h2>すべてのデータの削除</h2>
           <div style="text-align:center;">
-            <input type="button" value="初期化する" onclick="clearAll();">
+            <button class="danger" onclick="clearAll();">初期化する</button>
           </div>
         </section>
       </div>
       <!--  勤怠時間登録画面  -->
       <div id="working">
         <h2>時間を入力してください。</h2>
-        <table id="timecard">
-          <tr><td rowspan="2">日付</td><td rowspan="2">出勤</td><td colspan="2">時間内</td><td rowspan="2">退勤</td></tr>
-          <tr><td>外出</td><td>再入</td></tr>
-          <tr><td><input type="text" id="year" maxlength="4" style="width:2em;">年 <input type="text" id="month" maxlength="2" style="width:1em;">月 <input type="text" id="day" maxlength="2" style="width:1em;">日</td><td><input type="text" id="starttime" style="width:3em;"></td><td><input type="text" id="kyukeistarttime" style="width:3em;"></td><td><input type="text" id="kyukeiendtime" style="width:3em;"></td><td><input type="text" id="finishtime" style="width:3em;"></td></tr>
-        </table>
-        <input type="button" value="登録" onclick="resistworking();">
+        <form>
+          <fieldset>
+            <legend>日付</legend>
+            <section>
+              <p>
+                <input required="" type="date" id="hinichi">
+              </p>
+            </section>
+          </fieldset>
+          <fieldset>
+            <legend>出勤</legend>
+            <section>
+              <p>
+                <input type="time" id="starttime">
+                <button type="reset">Clear</button>
+              </p>
+            </section>
+          </fieldset>
+          <fieldset>
+            <legend>外出</legend>
+            <section>
+              <p>
+                <input type="time" id="kyukeistarttime">
+                <button type="reset">Clear</button>
+              </p>
+            </section>
+          </fieldset>
+          <fieldset>
+            <legend>再入</legend>
+            <section>
+              <p>
+                <input type="time" id="kyukeiendtime">
+                <button type="reset">Clear</button>
+              </p>
+            </section>
+          </fieldset>
+          <fieldset>
+            <legend>退勤</legend>
+            <section>
+              <p>
+                <input type="time" id="finishtime">
+                <button type="reset">Clear</button>
+              </p>
+            </section>
+          </fieldset>
+          <button onclick="resistworking();">登録</button>
+        </form>
       </div>
       <!--  勤怠履歴表示画面  -->
       <div id="result">

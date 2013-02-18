@@ -35,9 +35,7 @@ function nyuryoku(){
     var year = nowdate.getFullYear();
     var month = nowdate.getMonth() + 1
     var date = nowdate.getDate();
-    document.getElementById('year').value=year;
-    document.getElementById('day').value=date;
-    document.getElementById('month').value=month;
+    document.getElementById('hinichi').value=(year+'-'+('0'+month).slice(-2)+'-'+('0'+date).slice(-2));
     document.getElementById('starttime').value=localStorage.autostart;
     document.getElementById('finishtime').value=localStorage.autoend;
 }
@@ -88,15 +86,11 @@ function clearAll(){
     }
 }
 function resistworking(){
-    var iyear = document.getElementById('year').value;
-    var imonth = document.getElementById('month').value;
-    var iday = document.getElementById('day').value;
+    var ihinichi = document.getElementById('hinichi').value;
     var istart = document.getElementById('starttime').value;
     var iend = document.getElementById('finishtime').value;
     var kstart = document.getElementById('kyukeistarttime').value;
     var kend = document.getElementById('kyukeiendtime').value;
-    var iimonth= ("0" + imonth).slice(-2);
-    var iiday= ("0" + iday).slice(-2);
     var iistart= ("0" + istart).slice(-5);
     var iiend= ("0" + iend).slice(-5);
     if(kstart==""){
@@ -106,15 +100,14 @@ function resistworking(){
         var kkstart= ("0" + kstart).slice(-5);
         var kkend= ("0" + kend).slice(-5);
         }
-    var item=iyear+iimonth+iiday;
     var d = {
       'start': iistart,
       'end': iiend,
       'kyukeistart': kkstart,
       'kyukeiend': kkend
     };
-    localStorage.setItem(item,JSON.stringify(d));
-    alert(iyear+'年'+imonth+'月'+iday+'日'+istart+'～'+iend+'で登録しました。\nお疲れ様でした。');
+    localStorage.setItem(ihinichi,JSON.stringify(d));
+    alert(ihinichi.slice(0,4)+'年'+ihinichi.slice(5,7)+'月'+ihinichi.slice(8,10)+'日'+istart+'～'+iend+'で登録しました。\nお疲れ様でした。');
 }
 function months(toshi){
     var nowdate = new Date();
@@ -136,8 +129,8 @@ function months(toshi){
 }
 function getKyuyo(mmmm,nn){
     var mm=("0" +nn).slice(-2);
-    var mmmmmm=('0'+mmmm+mm).slice(-6);
-    var result = '<table><tr id="title-row"><td></td><td>日付</td><td>出勤</td><td>外出</td><td>再入</td><td>退勤</td><td>実働</td><td>給与</td></tr>';
+    var mmmmmm=('0'+mmmm+'-'+mm).slice(-7);
+    var result = '<table><thead><tr id="title-row"><td></td><td>日付</td><td>出勤</td><td>外出</td><td>再入</td><td>退勤</td><td>実働</td><td>給与</td></tr></thead><tbody>';
     var flag=0;
     var shima='odd';
     var tani=localStorage.tani;
@@ -147,7 +140,7 @@ function getKyuyo(mmmm,nn){
     var kyukeiJikan=0;
     for(var i = 0;i < localStorage.length;i++){
         var key = localStorage.key(i);
-        var match =('0'+key).slice(1,7);
+        var match =key.slice(0,7);
         if(match==mmmmmm){
             var flag=1;
             var datajson = localStorage.getItem(key);
@@ -170,12 +163,12 @@ function getKyuyo(mmmm,nn){
             var jikan=hhend-hhstart+hun;
             var nitto =jikan*jikyu;
             cumsumJikan=cumsumJikan+jikan;
-            result += '<tr class="'+shima+'"><td><a class="deleteKyuyo" onclick="deleteKyuyo('+key+');">×</a></td><td>'+('0'+key).slice(5,7)+'/'+('0'+key).slice(7,9)+'</td><td>'+data.start+'</td><td>'+data.kyukeistart+'</td><td>'+data.kyukeiend+'</td><td>'+data.end+'</td><td>'+jikan+'</td><td>￥'+nitto+'</td></tr>';
+            result += '<tr class="'+shima+'"><td><a class="deleteKyuyo" onclick="deleteKyuyo('+key+');">×</a></td><td>'+('0'+key).slice(6,8)+'/'+('0'+key).slice(9,11)+'</td><td>'+data.start+'</td><td>'+data.kyukeistart+'</td><td>'+data.kyukeiend+'</td><td>'+data.end+'</td><td>'+jikan+'</td><td>￥'+nitto+'</td></tr>';
             if(shima=='odd'){shima='even';}else{shima='odd';}
         }
     }
     if(flag==1){
-        result += '</table>';
+        result += '</tbody></table>';
         var target = document.getElementById('kyuyo');
         target.innerHTML = '<h3>'+mmmm+'年'+mm+'月</h3><h4>合計'+cumsumJikan+'時間・'+Math.ceil(cumsumJikan*jikyu)+'円</h4>'+result;
         }else{
