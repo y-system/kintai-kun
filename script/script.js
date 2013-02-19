@@ -156,8 +156,8 @@ function getKyuyo(mmmm,nn){
                 var kmstart=data.kyukeistart.slice(3,5);
                 kyukeiJikan=khend-khstart+Math.ceil((kmend-kmstart)/tani)*tani/60;
                 }else{
-                data.kyukeistart='---';
-                data.kyukeiend='---';
+                data.kyukeistart='--';
+                data.kyukeiend='--';
             }
 
             var hun=Math.floor(mmend/tani)*tani/60-Math.ceil(mmstart/tani)*tani/60-autorest/60;
