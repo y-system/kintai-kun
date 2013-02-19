@@ -163,7 +163,7 @@ function getKyuyo(mmmm,nn){
             var jikan=hhend-hhstart+hun;
             var nitto =jikan*jikyu;
             cumsumJikan=cumsumJikan+jikan;
-            result += '<tr class="'+shima+'"><td><a class="deleteKyuyo" onclick="deleteKyuyo('+key+');">×</a></td><td>'+('0'+key).slice(6,8)+'/'+('0'+key).slice(9,11)+'</td><td>'+data.start+'</td><td>'+data.kyukeistart+'</td><td>'+data.kyukeiend+'</td><td>'+data.end+'</td><td>'+jikan+'</td><td>￥'+nitto+'</td></tr>';
+            result += '<tr class="'+shima+'"><td><a class="deleteKyuyo" onclick="deleteKyuyo(\''+key+'\');">×</a></td><td>'+('0'+key).slice(6,8)+'/'+('0'+key).slice(9,11)+'</td><td>'+data.start+'</td><td>'+data.kyukeistart+'</td><td>'+data.kyukeiend+'</td><td>'+data.end+'</td><td>'+jikan+'</td><td>￥'+nitto+'</td></tr>';
             if(shima=='odd'){shima='even';}else{shima='odd';}
         }
     }
@@ -178,10 +178,10 @@ function getKyuyo(mmmm,nn){
     $("#kyuyo").css("display", "block");
 }
 function deleteKyuyo(keydate){
-    var key=keydate+'0';
+    var key=keydate;
     var toshi=key.slice(0,4);
-    var tsuki=key.slice(4,6);
-    var nichi=key.slice(6,8);
+    var tsuki=key.slice(5,7);
+    var nichi=key.slice(8,10);
     if(confirm('削除しますか？')){
         localStorage.removeItem(keydate);
         alert(toshi+'年'+tsuki+'月'+nichi+'日分をを削除しました。');
