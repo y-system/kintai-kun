@@ -51,8 +51,14 @@ ul li {
     clear: both;
 }
 .deleteKyuyo{
-    color:red;
-    text-decoration:none;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    background-image: url(buttons/images/ui/danger.png);
+    background-color: #b70404;
+    color: #fff;
+    text-shadow: -0.1rem -0.1rem 0 #830b0b;
+    border: none;
 }
 #kyuyo table tr td{
     border-right: 1px solid rgb(221, 221, 221);
@@ -86,5 +92,8 @@ table{
 }
 td{
     vertical-align:middle;
-    padding:5px 0;
+    padding:8px 0;
+}
+input[type="button"]{
+    margin:5px 2px;
 }

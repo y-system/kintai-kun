@@ -32,7 +32,7 @@
         <h2>設定</h2>
         <form>
           <fieldset>
-            <legend>時給</legend>
+            <legend>時給(円)</legend>
             <section>
               <p>
                 <input required="" type="number" id="jikyu">
@@ -71,13 +71,13 @@
               </p>
             </section>
           </fieldset>
-          <button onclick="jikyutoroku();">登録</button>
+          <input type="button" onclick="jikyutoroku();" value="登録">
         </form>
     
         <section id="clearAll">
           <h2>すべてのデータの削除</h2>
           <div style="text-align:center;">
-            <button class="danger" onclick="clearAll();">初期化する</button>
+            <input class="danger" type="button" onclick="clearAll();" value="初期化する">
           </div>
         </section>
       </div>
@@ -129,7 +129,7 @@
               </p>
             </section>
           </fieldset>
-          <button onclick="resistworking();">登録</button>
+          <input type="button" onclick="resistworking();" value="登録">
         </form>
       </div>
       <!--  勤怠履歴表示画面  -->
