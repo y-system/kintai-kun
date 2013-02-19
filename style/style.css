@@ -79,7 +79,7 @@ tr#title-row{
     font-weight: bold;
 }
 table{
-    border-spacing: 0 1px;
+    border-spacing: 1 1px;
     width:100%;
     border-collapse: collapse;
     font-size:16px;

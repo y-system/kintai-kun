@@ -137,30 +137,31 @@ function getKyuyo(mmmm,nn){
     var jikyu=localStorage.jikyu;
     var autorest=localStorage.autorest;
     var cumsumJikan=0;
-    var kyukeiJikan=0;
     for(var i = 0;i < localStorage.length;i++){
         var key = localStorage.key(i);
         var match =key.slice(0,7);
+        var kyukeiJikan=0;
         if(match==mmmmmm){
             var flag=1;
             var datajson = localStorage.getItem(key);
             var data = JSON.parse(datajson);
             var hhend=data.end.slice(0,2);
             var hhstart=data.start.slice(0,2);
-            var mmend=data.end.slice(3,5)/tani;
-            var mmstart=data.start.slice(3,5)/tani;
-            if(data.kyukeistart!=0){
+            var mmend=data.end.slice(3,5);
+            var mmstart=data.start.slice(3,5);
+            if(data.kyukeistart!=""&&data.kyukeiend!=""){
                 var khend=data.kyukeiend.slice(0,2);
                 var khstart=data.kyukeistart.slice(0,2);
                 var kmend=data.kyukeiend.slice(3,5);
                 var kmstart=data.kyukeistart.slice(3,5);
-                kyukeiJikan=khend-khstart+tani*Math.ceil((kmend-kmstart)/tani);
+                kyukeiJikan=khend-khstart+Math.ceil((kmend-kmstart)/tani)*tani/60;
                 }else{
                 data.kyukeistart='---';
                 data.kyukeiend='---';
             }
-            var hun=Math.floor(mmend)*tani/60-Math.ceil(mmstart)*tani/60-kyukeiJikan-autorest/60;
-            var jikan=hhend-hhstart+hun;
+
+            var hun=Math.floor(mmend/tani)*tani/60-Math.ceil(mmstart/tani)*tani/60-autorest/60;
+            var jikan=hhend-hhstart+hun-kyukeiJikan;
             var nitto =jikan*jikyu;
             cumsumJikan=cumsumJikan+jikan;
             result += '<tr class="'+shima+'"><td><a class="deleteKyuyo" onclick="deleteKyuyo(\''+key+'\');">×</a></td><td>'+('0'+key).slice(6,8)+'/'+('0'+key).slice(9,11)+'</td><td>'+data.start+'</td><td>'+data.kyukeistart+'</td><td>'+data.kyukeiend+'</td><td>'+data.end+'</td><td>'+jikan+'</td><td>￥'+nitto+'</td></tr>';
