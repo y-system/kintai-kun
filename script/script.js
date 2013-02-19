@@ -183,7 +183,7 @@ function deleteKyuyo(keydate){
     var toshi=key.slice(0,4);
     var tsuki=key.slice(5,7);
     var nichi=key.slice(8,10);
-    if(confirm('削除しますか？')){
+    if(confirm(toshi+'年'+tsuki+'月'+nichi+'分を削除しますか？')){
         localStorage.removeItem(keydate);
         alert(toshi+'年'+tsuki+'月'+nichi+'日分をを削除しました。');
         getKyuyo(toshi,tsuki);
