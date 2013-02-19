@@ -142,7 +142,7 @@ function getKyuyo(mmmm,nn){
         var match =key.slice(0,7);
         var kyukeiJikan=0;
         if(match==mmmmmm){
-            var flag=1;
+            flag=1+flag;
             var datajson = localStorage.getItem(key);
             var data = JSON.parse(datajson);
             var hhend=data.end.slice(0,2);
@@ -161,17 +161,18 @@ function getKyuyo(mmmm,nn){
             }
 
             var hun=Math.floor(mmend/tani)*tani/60-Math.ceil(mmstart/tani)*tani/60-autorest/60;
-            var jikan=hhend-hhstart+hun-kyukeiJikan;
+            var minus=hhend-hhstart+hun;
+            if(minus<0){var jikan=0-kyukeiJikan;}else{var jikan=hhend-hhstart+hun-kyukeiJikan;}
             var nitto =jikan*jikyu;
             cumsumJikan=cumsumJikan+jikan;
             result += '<tr class="'+shima+'"><td><a class="deleteKyuyo" onclick="deleteKyuyo(\''+key+'\');">×</a></td><td>'+('0'+key).slice(6,8)+'/'+('0'+key).slice(9,11)+'</td><td>'+data.start+'</td><td>'+data.kyukeistart+'</td><td>'+data.kyukeiend+'</td><td>'+data.end+'</td><td>'+jikan+'</td><td>￥'+nitto+'</td></tr>';
             if(shima=='odd'){shima='even';}else{shima='odd';}
         }
     }
-    if(flag==1){
+    if(flag!=0){
         result += '</tbody></table>';
         var target = document.getElementById('kyuyo');
-        target.innerHTML = '<h3>'+mmmm+'年'+mm+'月</h3><h4>合計'+cumsumJikan+'時間・'+Math.ceil(cumsumJikan*jikyu)+'円</h4>'+result;
+        target.innerHTML = '<h3>'+mmmm+'年'+mm+'月</h3><h4>合計'+flag+'回・'+cumsumJikan+'時間・'+Math.ceil(cumsumJikan*jikyu)+'円</h4>'+result;
         }else{
         var target = document.getElementById('kyuyo');
         target.innerHTML ='<h3>'+mmmm+'年'+mm+'月</h3>該当するデータはありません。';
