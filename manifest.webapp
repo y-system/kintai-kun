@@ -1,4 +1,5 @@
 ﻿{
+  "version":"0.5",
   "name": "勤怠くん",
   "description": "勤怠打刻した時刻を登録して端末内で給与計算を行います。",
   "launch_path": "/index.html",
@@ -14,5 +15,6 @@
     "name": "Yoshitomo Akimoto",
     "url": "http://y-misc.org/mozilla"
   },
+  "installs_allowed_from": ["*"],
   "default_locale": "ja"
 }
