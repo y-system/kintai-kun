@@ -137,11 +137,12 @@ function getKyuyo(mmmm,nn){
     var jikyu=localStorage.jikyu;
     var autorest=localStorage.autorest;
     var cumsumJikan=0;
-    for(var i = 0;i < localStorage.length;i++){
-        var key = localStorage.key(i);
+    for(var i = 1;i < 32;i++){
+	    var datedate=("0" +i).slice(-2);
+        var key = mmmmmm+'-'+datedate;
         var match =key.slice(0,7);
         var kyukeiJikan=0;
-        if(match==mmmmmm){
+        if(localStorage.getItem(key)!=null){
             flag=1+flag;
             var datajson = localStorage.getItem(key);
             var data = JSON.parse(datajson);
