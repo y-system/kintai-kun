@@ -18,5 +18,6 @@
     "url": "http://twitter.com/y_system"
   },
   "installs_allowed_from": ["*"],
-  "default_locale": "ja"
+  "default_locale": "ja",
+  "appcache_path": "/cashe.appcache"
 }
